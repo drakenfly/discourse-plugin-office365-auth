@@ -7,10 +7,10 @@ module OmniAuth
     class MicrosoftOffice365 < OmniAuth::Strategies::OAuth2
       option :name, :microsoft_office365
 
-      DEFAULT_SCOPE = "openid email profile https://graph.microsoft.com/User.Read"
+      DEFAULT_SCOPE = "openid email profile https://graph.microsoft.de/User.Read"
 
       option :client_options,
-        site: 'https://login.microsoftonline.com',
+        site: 'https://login.microsoftonline.de',
         authorize_url: '/common/oauth2/v2.0/authorize',
         token_url: '/common/oauth2/v2.0/token'
 
@@ -32,7 +32,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get('https://graph.microsoft.com/v1.0/me').parsed
+        @raw_info ||= access_token.get('https://graph.microsoft.de/v1.0/me').parsed
       end
 
       def authorize_params
